@@ -1,0 +1,8 @@
+{
+  "name": "Phone Service Inventory",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "17a689ed"
+}
