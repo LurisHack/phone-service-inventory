@@ -1,5 +1,8 @@
 {
   "name": "Phone Service Inventory",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }
