@@ -25,7 +25,11 @@
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.2"
+    "zone.js": "~0.14.2",
+    "@angular/elements": "^17.1.1",
+    "@angular/fire": "^17.0.0",
+    "luris-library": "^0.0.14",
+    "ngx-print": "^1.5.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.0",
