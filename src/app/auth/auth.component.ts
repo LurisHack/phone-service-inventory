@@ -1,18 +1,15 @@
 import {Component} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
- import {MyLibraryModule} from "luris-library";
-import {catchError, from, Observable, throwError} from "rxjs";
- import {environment} from "../../environments/environment.prod";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {updatePassword} from "@angular/fire/auth";
 import {Router} from "@angular/router";
 import {NgIf} from "@angular/common";
+import {MyLibraryModule} from "luris-library";
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
-  imports: [IonicModule, MyLibraryModule, HttpClientModule, NgIf],
+  imports: [IonicModule, MyLibraryModule, HttpClientModule, NgIf, MyLibraryModule],
   standalone: true,
   providers: [HttpClient]
 })
@@ -23,113 +20,19 @@ export class AuthComponent{
   alert: { hasState: boolean, backgroundColor: string, color: string, text: string } =
     {hasState: false, backgroundColor: '', color: '', text: ''}
 
-  constructor(private http: HttpClient) {
+  constructor(private router: Router) {
   }
 
 
   formOutputData($event: { email: string; password: string, state: string }) {
 
-    let obs: Observable<any>;
-
-    // this.PS.loadingState = true;
-    // this.PS.loadProgress({progress: 0.5, text: 'Please Wait'})
-    this.alert.hasState = false
-
-    const obsVal = () => {
-
-      obs.subscribe({
-        next: (data) => {
-          console.log(data)
+    this.router.navigateByUrl('/home').then()
 
 
-          // if (!data.emailVerified){
-          //   this.PS.loadingState = false;
-          //   this.PS.endProgress()
-          //   this.alert = {hasState: true, backgroundColor:'red', color: 'white', text: 'Please email verify first!'}
-          //   return
-          // }
-
-
-      //     this.userData.customClaim$?.subscribe(claim => {
-      //
-      //       if (!claim) {
-      //         return;
-      //       }
-      //
-      //
-      //       this.router.navigateByUrl(claim.redirectUrl)
-      //         .then(() => {
-      //           this.PS.loadingState = false;
-      //           this.PS.loadProgress({progress: 1, text: 'Please Wait'})
-      //           this.PS.endProgress()
-      //         })
-      //
-      //     })
-      //
-      //
-        },
-          //   error: (err) => {
-      //     console.log(err.message)
-      //     this.alert = {hasState: true, backgroundColor: 'red', color: 'white', text: err.message}
-      //     this.PS.loadingState = false
-      //     this.PS.endProgress();
-      //   }
-      })
-    //
-    }
-
-    // switch ($event.state) {
-    //   case 'Register':
-    //     this.http.post(environment.api.createUser, {
-    //       email: $event.email,
-    //       password: $event.password,
-    //       "permissions": {
-    //         "mainAdmin": true
-    //       },
-    //       "redirectUrl": "/"
-    //     })
-    //       .pipe(
-    //         catchError(err => {
-    //            // alert(err.error.message);
-    //           this.PS.loadingState = false;
-    //           this.alert = {hasState: true, backgroundColor: 'red', color: 'white', text: err.error.message}
-    //
-    //           return  throwError(() => {err.error.message
-    //             const error: any = new Error(`This is error  ${ err.error.message }`);
-    //              return error;
-    //           });
-    //           // return
-    //         })
-    //       )
-    //       .subscribe(async () => {
-    //         this.PS.loadingState = false;
-    //         this.showForm = false;
-    //         this.alert = {hasState: true, backgroundColor: 'red', color: 'white', text: "Successfully registered. Please login to work."}
-    //
-    //         setTimeout(() => {
-    //           this.showForm = true
-    //         })
-    //
-    //        });
-    //
-    //
-    //     // obs = from(this.FAS.firebaseRegister({email: $event.email, password: $event.password}))
-    //     break;
-    //
-    //   case 'Login':
-    //     obs = from(this.FAS.firebaseLogin({email: $event.email, password: $event.password}))
-    //
-    //     obsVal();
-    //     break;
-    // }
-
+    return
 
 
 
   }
 
-
-  // updateUserPassword() {
-  //   this.FAS.updatePassword()
-  // }
 }

@@ -1,0 +1,96 @@
+<ion-split-pane  style="--side-max-width: 200px !important;"   when="xl" contentId="phone-service-shop">
+  <ion-menu  contentId="phone-service-shop">
+    <ion-header mode="ios"  class="ion-no-border" >
+
+      <ion-toolbar class="ion-no-margin ion-align-items-center"   style="--background: #F3F7FD"  >
+        <ion-icon  slot="start" class="ion-margin-start"  style="color: #465B7D" size="large"    name="storefront"></ion-icon>
+        <ion-text style=" font-size: 20px; margin-left: 10px;  font-family: RobotoMedium, sans-serif ;   align-self: center; color: #465B7D" class="ion-margin-start">Shop Name</ion-text>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content style="--background: #F3F7FD">
+
+
+      <ion-item-group  class="ion-margin-top" style="background: #F3F7FD">
+
+        <ion-item lines="none" class="ion-no-padding"  *ngFor="let menu of projectShortcuts"   detail="false"
+                  style="--background: #F3F7FD; --border-radius: 30px; --min-height: 35px; margin: 5px; align-items: center;"    [button]="true"
+                  [routerLink]="menu.routerLink">
+          <!--          <ion-icon style="font-size: 13px;color: #465B7D;margin-left: 3px;"   name="reorder-three-outline"></ion-icon>-->
+          <ion-icon  size="small"  style="color: #465B7D; margin-left: 5px; " [name]="menu.icon+ '-outline'" ></ion-icon>
+          <ion-text style="font-size: 14px; margin-left: 15px;  font-family: RobotoMedium, sans-serif ;  color:#465B7D" [innerText]="menu.name"></ion-text>
+          <!--          <ion-icon style="font-size: 13px;color: #465B7D" slot="end" name="eye"></ion-icon>-->
+        </ion-item>
+
+        <!--        <ion-item-divider  style="border-bottom: none; &#45;&#45;inner-padding-start: 5px; &#45;&#45;background: transparent">-->
+        <!--          <span style="font-size: 13px; color: #475C7EC8">Product categories</span>-->
+        <!--        </ion-item-divider>-->
+
+        <ion-accordion-group #accordionGroup   class="ion-no-margin" expand="inset" style="margin: 10px" mode="ios" >
+
+          <ion-accordion   *ngFor="let group of productCategories | productShortcut " [value]="group.groupName" style="background: #E5EDFA; border: none; border-bottom: white 1px solid">
+            <ion-item lines="none" slot="header" style="--background: transparent; font-size: 10px; color: #465B7D; --min-height: 40px">
+              <ion-text style=" font-size: 14px; font-family: RobotoMedium, sans-serif ;    color: #465B7D">{{group.groupName}}</ion-text>
+            </ion-item>
+            <div slot="content" style="background: #E5EDFA; padding-top: 5px" class="ion-no-padding">
+
+              <ion-item lines="none"   *ngFor="let menu of group.data"   detail="false" (click)="productCategoryEvent(menu)"
+                        style="--background: transparent; --border-radius: 30px; --min-height: 35px "    [button]="true" [disabled]="menu.disabled">
+                <ion-icon  size="small"  style="color: #465B7D " [name]="menu.icon+ '-outline'" ></ion-icon>
+                <ion-text style="font-size: 14px;  font-family: RobotoMedium, sans-serif ;  color:#465B7D; margin-left: 15px;" [innerText]="menu.name"></ion-text>
+              </ion-item>
+
+            </div>
+          </ion-accordion>
+
+        </ion-accordion-group>
+
+
+        <ion-item [button]="true" lines="none"  detail="false" style="--background: #F3F7FD; --border-radius: 30px; --min-height: 20px; margin: 5px"  (click)="logout()">
+          <ion-icon  size="small"  style="color: #465B7D" slot="start" name="log-out-outline"></ion-icon>
+          <ion-text  style="font-size: 14px;  font-family: RobotoMedium, sans-serif ; color: #465B7D"    [innerText]="'Logout'"   ></ion-text>
+        </ion-item>
+      </ion-item-group>
+
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="phone-service-shop">
+    <!--    <ion-header mode="ios">-->
+    <!--      <ion-toolbar>-->
+    <!--        <ion-title>Main View</ion-title>-->
+    <!--      </ion-toolbar>-->
+    <!--    </ion-header>-->
+    <!--    <ion-content class="ion-padding"> Main View Content </ion-content>-->
+    <ion-router-outlet></ion-router-outlet>
+  </div>
+</ion-split-pane>
+
+
+
+<!--<ion-menu contentId="main-content">-->
+<!--  <ion-header mode="ios">-->
+<!--    <ion-toolbar>-->
+<!--      <ion-title>Menu Content</ion-title>-->
+<!--    </ion-toolbar>-->
+<!--  </ion-header>-->
+<!--  <ion-content class="ion-padding">This is the menu content.</ion-content>-->
+<!--</ion-menu>-->
+
+<!--<div class="ion-page" id="main-content">-->
+<!--  <ion-header   style="&#45;&#45;background: white; box-shadow: none" >-->
+<!--    <ion-toolbar >-->
+<!--      <ion-menu-button slot="start"></ion-menu-button>-->
+
+
+<!--       <strong class="ion-margin-start" style="font-weight: bolder; font-size: 25px;">-->
+<!--        Hotel Pro-->
+<!--      </strong>-->
+<!--      <ion-button slot="end" size="small" color="medium"   class="ion-text-capitalize">-->
+<!--        Create New Hotel-->
+<!--      </ion-button>-->
+<!--    </ion-toolbar>-->
+<!--    <luris-progress-bar   [progressBarObj]="PS.progress"></luris-progress-bar>-->
+<!--  </ion-header>-->
+
+<!--</div>-->
+
