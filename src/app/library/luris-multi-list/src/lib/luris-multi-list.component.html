@@ -1,0 +1,114 @@
+<ion-content [scrollY]="false">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="header && header.length" #divElement style="height: 100%">
+
+    <cdk-virtual-scroll-viewport   (scrolledIndexChange)="scrollingIndex($event)" [itemSize]="itemSize"
+                                   [minBufferPx]="divElement.clientHeight" [maxBufferPx]="divElement.clientHeight"
+                                   class="ion-content-scroll-host">
+
+
+
+      <ion-item class="ion-no-margin header-background-color" lines="full" color="light"
+                [ngStyle]="{'--min-height':   itemSize+'px'}">
+        <ion-col *ngFor="let header of  header ; index as i" [ngClass]="[header.hide]"
+                 class="ion-no-margin ion-no-padding">
+          <h6 class="text-color">{{header.name}}</h6>
+        </ion-col>
+      </ion-item>
+
+
+      <ion-item-sliding [disabled]="divElement.clientWidth > 1200" class="ion-no-margin ion-no-padding"
+                        *ngFor="let d of  data; index as i">
+
+
+        <ion-item button="true" class="ion-no-margin" lines="full" [ngStyle]="{'--min-height':  itemSize + 'px'}">
+          <ion-col *ngFor="let header of  header index as i" [ngClass]="[header.hide]"
+                   class="ion-no-margin ion-no-padding">
+
+
+                    <span *ngIf="(d[header.name] && d[header.name] != 'Action') && (d[header.name]) as text"
+                          (click)="itemEvent('ViewDetail', d, null)"
+                          class="ion-text-nowrap text-color" style="display: block; font-size: 15px"
+                          [innerText]="(text.length >= 10 ? (text | slice : 0 : 10) : text) + (text.length >= 10 ? '..' : '')">
+                    </span>
+
+            <div *ngIf="header.name  === 'Action' && header.data as header" style="font-size: 18px">
+              <ion-icon *ngIf="header.print" title="print" name="print-outline"
+                        (click)="itemEvent('Print', d, $event)"></ion-icon>
+              <ion-icon *ngIf="header.delete" title="delete" style="margin-left: 5px;" name="trash-outline"
+                        (click)="itemEvent('Delete', d, $event)"></ion-icon>
+              <ion-icon *ngIf="header.edit" title="edit" style="margin-left: 5px;" name="create-outline"
+                        (click)="itemEvent('Edit', d, $event)"></ion-icon>
+            </div>
+          </ion-col>
+
+        </ion-item>
+
+        <ion-item-options>
+          <div *ngFor="let header of  header index as i" style="display: flex">
+            <div *ngIf="header.name == 'Action' && header.data as header" style="display: flex">
+
+              <ion-item-option *ngIf="header.print" color="success" (click)="itemEvent('Print', d, $event)"
+                               class="ion-text-capitalize">
+                <ion-icon style="margin-left: 5px;" name="print-outline"></ion-icon>&nbsp;Print
+              </ion-item-option>
+
+              <ion-item-option *ngIf="header.edit" (click)="itemEvent('Edit', d, $event)" class="ion-text-capitalize">
+                <ion-icon *ngIf="header.edit" title="edit" style="margin-left: 5px;"
+                          name="create-outline"></ion-icon>&nbsp;Edit
+              </ion-item-option>
+
+              <ion-item-option *ngIf="header.delete" color="danger" class="ion-text-capitalize"
+                               (click)="itemEvent('Delete', d, $event)">
+                <ion-icon style="margin-left: 5px;" name="trash-outline"></ion-icon>&nbsp;Delete
+              </ion-item-option>
+
+            </div>
+          </div>
+
+
+        </ion-item-options>
+
+      </ion-item-sliding>
+
+
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+</ion-content>
+
+
+<!--<div id="print-section" style="text-align: left" hidden>-->
+<!--  &lt;!&ndash;Your html stuff that you want to print&ndash;&gt;-->
+<!--  <h1 style="text-align: center">Top (Mobile Service)</h1>-->
+
+<!--  <small>09694885501, 09688842240</small><br>-->
+<!--  <small>ဗိုလ်ချုပ်လမ်း၊ အောင်မဂ်လာရပ်ကွက်</small><br>-->
+<!--  <small>ဘုတ်ပြင်မြို့</small><br>-->
+
+<!--  <small>Date: {{date | date : 'dd/MM/YY hh:mm'}}</small>-->
+
+<!--  <hr>-->
+
+<!--  <div *ngFor="let data of printDataAry" style="display: flex; margin-top: 5px;">-->
+<!--    <small style="width: 50%; text-align: left">{{data.key}}</small> <small-->
+<!--    style="width: 50%; text-align: right">{{data.value}}</small>-->
+<!--  </div>-->
+
+<!--  <hr>-->
+
+<!--  <small>ဘောင်ချာပျောက်လျင် တာ၀န် မယူပါ</small><br>-->
+<!--  <small>အပ်ထားသောဖုန်းများ တစ်လကျော်လျင် တာ၀န် မယူပါ</small><br>-->
+<!--  <small>ပြုပြင်သည့် အစိတ်အပိုင်းမှ၍ ကျန် Error များ တာ၀န်မယူပါ ဆိုင်မှ မထွက်ခွာမီ စစ်ဆေးယူပါ</small>-->
+
+
+<!--</div>-->

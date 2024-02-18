@@ -9,22 +9,8 @@ import {HomeComponent} from "./home/home.component";
     },
     {
       path: 'home',
-      component: HomeComponent,
-      children:[
-        {
-          path: 'dashboard',
-          loadComponent: () => import('./home/dashboard/dashboard.component').then(m => m.DashboardComponent)
-        },
-        {
-          path: 'accept',
-          loadComponent: () => import('./home/accept/accept.component').then(m => m.AcceptComponent)
-        },
-        // {
-        //   path: '',
-        //   redirectTo: 'dashboard',
-        //   pathMatch: "full"
-        // }
-      ]
+      loadChildren: () => import('./home/home.route').then(m => m.HomeRoute),
+
     },
     {
       path: '',

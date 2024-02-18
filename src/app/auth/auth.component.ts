@@ -1,15 +1,14 @@
 import {Component} from '@angular/core';
-import {IonicModule} from "@ionic/angular";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {NgIf} from "@angular/common";
-import {MyLibraryModule} from "luris-library";
+import {CommonModule, NgIf} from "@angular/common";
+ import {IonicModule} from "@ionic/angular";
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
-  imports: [IonicModule, MyLibraryModule, HttpClientModule, NgIf, MyLibraryModule],
+  imports: [HttpClientModule, NgIf, CommonModule, IonicModule],
   standalone: true,
   providers: [HttpClient]
 })
