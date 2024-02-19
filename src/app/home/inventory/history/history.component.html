@@ -1,0 +1,22 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar class="header-background-color">
+    <ion-menu-button slot="start"></ion-menu-button>
+
+
+    <ion-badge slot="end" color="danger" class="ion-margin-end">
+      {{data.length}}
+    </ion-badge>
+    <ion-icon slot="end" class="ion-hide-md-down" name="reload-outline" (click)="listReload()"></ion-icon>
+
+    <ion-button size="small" color="dark" slot="end" fill="clear">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-button>
+
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <luris-multi-list [header]="header" [data]="data" [itemSize]="35"></luris-multi-list>
+</ion-content>
