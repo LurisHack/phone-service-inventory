@@ -1,8 +1,9 @@
 <ion-header mode="ios" class="ion-no-border">
   <ion-toolbar class="header-background-color">
+    <ion-menu-button slot="start"></ion-menu-button>
     <ion-title>Shop Detail</ion-title>
-    <ion-button slot="end" (click)="setShopDetail()" fill="clear">
-      <ion-icon name="check-mark-outline"></ion-icon>
+    <ion-button slot="end" size="small" (click)="openAdd = !openAdd" fill="clear">
+      <ion-icon name="create-outline"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
@@ -35,7 +36,7 @@
         09123123123
       </ion-card-subtitle>
     </ion-item>
-    <ion-item>
+    <ion-item class="ion-text-wrap">
       <ion-label>
         <ion-note>Address</ion-note>
       </ion-label>
@@ -64,3 +65,7 @@
 
 
 </ion-content>
+
+<ion-footer  *ngIf="openAdd">
+  <luris-multi-form  [FormInput]="FormInput" (formOutput)="formOutput($event)"></luris-multi-form>
+</ion-footer>

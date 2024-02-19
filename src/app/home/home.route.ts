@@ -9,11 +9,7 @@ export const HomeRoute: Routes = [
     children:[
       {
         path: 'dashboard',
-        loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent)
-      },
-      {
-        path: 'accept',
-        loadComponent: () => import('./accept/accept.component').then(m => m.AcceptComponent)
+        loadChildren: () => import('./dashboard/dashboard.route').then(m => m.DashboardRoute)
       },
       {
         path: 'order',

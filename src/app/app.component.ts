@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {IonicModule, Platform} from "@ionic/angular";
+import {Component, HostListener} from '@angular/core';
+import {IonicModule, IonMenu, Platform} from "@ionic/angular";
+import {AutoCloseOverlaysService} from "./utility/services/autoCloseOverlays.service";
 declare var StartAppAds:any;
 
 @Component({
@@ -9,10 +10,13 @@ declare var StartAppAds:any;
   imports: [
     IonicModule
   ],
-  standalone: true
-})
+  standalone: true,
+  providers: [IonMenu, AutoCloseOverlaysService]
+ })
 export class AppComponent {
-  constructor(private platform: Platform) {
+  constructor(private platform: Platform, private autoCloseOverlaysService: AutoCloseOverlaysService,) {
+
+
 
     // this.platform.ready().then(() => {
     //   console.log(this.platform.is('android'))
@@ -82,4 +86,10 @@ export class AppComponent {
   //
   //   },5000)
   // }
+
+  @HostListener('window:popstate', ['$event'])
+  async onPopState() {
+    console.log('on pause state')
+    await this.autoCloseOverlaysService.trigger();
+  }
 }

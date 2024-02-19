@@ -3,58 +3,45 @@ import {Component, OnInit} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {IonicModule} from "@ionic/angular";
 
-import {MultiListHeaderBlueprint, MultiListHeaderModel} from "../../utility/blueprint/multi-list.blueprint";
- import {MultiFormBluePrint, MultiFormModel} from "../../utility/blueprint/multi-form.blueprint";
+import {MultiListHeaderBlueprint, MultiListHeaderModel} from "../../../utility/blueprint/multi-list.blueprint";
+ import {MultiFormBluePrint, MultiFormModel} from "../../../utility/blueprint/multi-form.blueprint";
 import {LurisLibraryModule} from "koluris-library";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-accept',
-  templateUrl: './accept.component.html',
-  styleUrls: ['./accept.component.scss'],
+  selector: 'app-accept-today',
+  templateUrl: './accept-today.component.html',
+  styleUrls: ['./accept-today.component.scss'],
   imports: [FormsModule, NgIf, IonicModule, LurisLibraryModule],
   standalone: true,
  })
-export class AcceptComponent implements OnInit {
+export class AcceptTodayComponent implements OnInit {
 
 
-  segmentValue = ''
+  segmentValue = 'accept-today-today'
 
   openAdd = false;
 
   data: any[] = [];
 
-  loaded = false
 
   header: MultiListHeaderModel[] = []
 
    //
-  FormInput: MultiFormModel[] = [
-    new MultiFormBluePrint('Name', 'Name', 0, 'text', null),
-    new MultiFormBluePrint('Phone', 'Phone', 0, 'phone', null),
-    new MultiFormBluePrint('Brand', 'Brand', 0, 'text', null),
-    new MultiFormBluePrint('Model', 'Model', 0, 'text', null),
-    new MultiFormBluePrint('Color', 'Color', 0, 'text', null),
-    new MultiFormBluePrint('Error', 'Error', 0, 'text', null),
-    new MultiFormBluePrint('Spare part fee', 'Part', 0, 'number', null),
-    new MultiFormBluePrint('Charge', 'Charge', 0, 'number', null),
-    new MultiFormBluePrint('Deposit', 'Deposit', 0, 'number', null),
-  ]
+  FormInput: MultiFormModel[] = []
 
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-   }
-
-  ngOnInit() {
-    // setTimeout(() => {
-
 
     this.activatedRoute.fragment.subscribe(fragment => {
       console.log(fragment)
-      this.segmentValue = fragment ?? '';
+      this.segmentValue = fragment ?? 'accept-today-today';
     })
 
 
+  }
+
+  ngOnInit() {
       this.header = [
         new MultiListHeaderBlueprint('Name', '', undefined),
         new MultiListHeaderBlueprint('Phone', 'ion-hide-xl-down', undefined),
@@ -75,21 +62,20 @@ export class AcceptComponent implements OnInit {
       ];
 
 
-      // this.FormInput =   [
-      //   new MultiFormBluePrint('Name', 'Name', 0, 'text', null),
-      //   new MultiFormBluePrint('Phone', 'Phone', 0, 'phone', null),
-      //   new MultiFormBluePrint('Brand', 'Brand', 0, 'text', null),
-      //   new MultiFormBluePrint('Model', 'Model', 0, 'text', null),
-      //   new MultiFormBluePrint('Color', 'Color', 0, 'text', null),
-      //   new MultiFormBluePrint('Error', 'Error', 0, 'text', null),
-      //   new MultiFormBluePrint('Spare part fee', 'Part', 0, 'number', null),
-      //   new MultiFormBluePrint('Charge', 'Charge', 0, 'number', null),
-      //   new MultiFormBluePrint('Deposit', 'Deposit', 0, 'number', null),
-      // ]
 
 
+      this.FormInput =   [
+        new MultiFormBluePrint('Name', 'Name', 0, 'text', null),
+        new MultiFormBluePrint('Phone', 'Phone', 0, 'phone', null),
+        new MultiFormBluePrint('Brand', 'Brand', 0, 'text', null),
+        new MultiFormBluePrint('Model', 'Model', 0, 'text', null),
+        new MultiFormBluePrint('Color', 'Color', 0, 'text', null),
+        new MultiFormBluePrint('Error', 'Error', 0, 'text', null),
+        new MultiFormBluePrint('Spare part fee', 'Part', 0, 'number', null),
+        new MultiFormBluePrint('Charge', 'Charge', 0, 'number', null),
+        new MultiFormBluePrint('Deposit', 'Deposit', 0, 'number', null),
+      ]
 
-    // }, 500)
   }
 
   async segmentEvent($event: any) {
@@ -106,5 +92,10 @@ export class AcceptComponent implements OnInit {
 
   formOutput($event: MultiFormModel) {
     this.data.push($event)
+  }
+
+  addData() {
+    this.openAdd = !this.openAdd
+    console.log(this.openAdd)
   }
 }

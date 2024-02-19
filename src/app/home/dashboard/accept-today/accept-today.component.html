@@ -1,12 +1,6 @@
 <ion-header mode="ios" class="ion-no-border">
   <ion-toolbar class="header-background-color">
     <ion-menu-button slot="start"></ion-menu-button>
-    <ion-segment [(ngModel)]="segmentValue" slot="start" (ionChange)="segmentEvent($event)">
-      <ion-segment-button value="accept-today" class="ion-text-nowrap"><span><span class="ion-hide-md-down">Today</span> Accept</span>
-      </ion-segment-button>
-      <ion-segment-button value="accept-list"><span><span class="ion-hide-md-down">Accepted</span> List</span>
-      </ion-segment-button>
-    </ion-segment>
 
     <ion-badge slot="end" color="danger" class="ion-margin-end">
       {{data.length}}
@@ -18,11 +12,12 @@
     </ion-button>
 
 
-    <ion-button [disabled]="segmentValue == 'accept-list'" class="ion-margin-end" size="small" slot="end"
-                color="dark" (click)="openAdd = !openAdd" fill="clear">
+    <ion-button   class="ion-margin-end" size="small" slot="end"
+                color="dark" (click)="addData()" fill="clear">
       <ion-icon   [name]="openAdd ? 'close' : 'add'"></ion-icon>
 <!--      <ion-icon *ngIf="openAdd" name="close"></ion-icon>-->
     </ion-button>
+
 
   </ion-toolbar>
 </ion-header>
@@ -32,7 +27,7 @@
 </ion-content>
 
 
-<ion-footer  *ngIf="openAdd && segmentValue == 'accept-today'">
+<ion-footer  *ngIf="openAdd">
   <luris-multi-form  [FormInput]="FormInput" (formOutput)="formOutput($event)"></luris-multi-form>
 </ion-footer>
 
