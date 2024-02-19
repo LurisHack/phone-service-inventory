@@ -15,6 +15,7 @@ import {getStorage, provideStorage} from "@angular/fire/storage";
 import {routes} from "./app/app.routes";
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
 import {bootstrapApplication} from "@angular/platform-browser";
+import {LurisLibraryModule} from "koluris-library";
 
 if (environment.production) {
   enableProdMode();
@@ -44,7 +45,7 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes),
     importProvidersFrom([
       IonicModule.forRoot(),
-      provideFirebaseApp(() => initializeApp(environment.firebase)),
+       provideFirebaseApp(() => initializeApp(environment.firebase)),
       provideAuth(() => getAuth() ),
       provideFirestore(() => getFirestore()),
       provideFunctions(() => getFunctions()),

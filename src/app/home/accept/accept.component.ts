@@ -4,8 +4,9 @@ import {NgIf} from "@angular/common";
 import {IonicModule} from "@ionic/angular";
 
 import {MultiListHeaderBlueprint, MultiListHeaderModel} from "../../utility/blueprint/multi-list.blueprint";
+ import {MultiFormBluePrint, MultiFormModel} from "../../utility/blueprint/multi-form.blueprint";
 import {LurisLibraryModule} from "koluris-library";
-import {MultiFormBluePrint, MultiFormModel} from "../../utility/blueprint/multi-form.blueprint";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-accept',
@@ -17,7 +18,7 @@ import {MultiFormBluePrint, MultiFormModel} from "../../utility/blueprint/multi-
 export class AcceptComponent implements OnInit {
 
 
-  segmentInitialValue = 'today-accept'
+  segmentValue = ''
 
   openAdd = false;
 
@@ -41,11 +42,17 @@ export class AcceptComponent implements OnInit {
   ]
 
 
-  constructor() {
-  }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+   }
 
   ngOnInit() {
     // setTimeout(() => {
+
+
+    this.activatedRoute.fragment.subscribe(fragment => {
+      console.log(fragment)
+      this.segmentValue = fragment ?? '';
+    })
 
 
       this.header = [
@@ -85,8 +92,8 @@ export class AcceptComponent implements OnInit {
     // }, 500)
   }
 
-  segmentEvent($event: any) {
-
+  async segmentEvent($event: any) {
+       await this.router.navigateByUrl('/home/accept#'+$event.detail.value)
   }
 
   // formOutput($event: MultiFormModel) {

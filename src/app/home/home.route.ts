@@ -16,6 +16,18 @@ export const HomeRoute: Routes = [
         loadComponent: () => import('./accept/accept.component').then(m => m.AcceptComponent)
       },
       {
+        path: 'order',
+        loadComponent: () => import('./inventory/order/order.component').then(m => m.OrderComponent)
+      },
+      {
+        path: 'history',
+        loadComponent: () => import('./inventory/history/history.component').then(m => m.HistoryComponent)
+      },
+      {
+        path: 'shop-detail',
+        loadComponent: () => import('./setting/shop-detail/shop-detail.component').then(m => m.ShopDetailComponent)
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: "full"

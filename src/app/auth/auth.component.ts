@@ -3,12 +3,13 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {CommonModule, NgIf} from "@angular/common";
  import {IonicModule} from "@ionic/angular";
+import {LurisLibraryModule} from "koluris-library";
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
-  imports: [HttpClientModule, NgIf, CommonModule, IonicModule],
+  imports: [HttpClientModule, NgIf, CommonModule, IonicModule, LurisLibraryModule],
   standalone: true,
   providers: [HttpClient]
 })
@@ -19,19 +20,12 @@ export class AuthComponent{
   alert: { hasState: boolean, backgroundColor: string, color: string, text: string } =
     {hasState: false, backgroundColor: '', color: '', text: ''}
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
 
-  formOutputData($event: { email: string; password: string, state: string }) {
-
+  formOutput($event: { email: string; password: string; state: string }) {
+    console.log($event)
     this.router.navigateByUrl('/home').then()
 
-
-    return
-
-
-
   }
-
 }

@@ -14,7 +14,7 @@
 
         <ion-item lines="none" class="ion-no-padding"  *ngFor="let menu of projectShortcuts"   detail="false"
                   style="--background: #F3F7FD; --border-radius: 30px; --min-height: 35px; margin: 5px; align-items: center;"    [button]="true"
-                  [routerLink]="menu.routerLink">
+                  [routerLink]="menu.routerLink" [fragment]="menu.fragment">
           <!--          <ion-icon style="font-size: 13px;color: #465B7D;margin-left: 3px;"   name="reorder-three-outline"></ion-icon>-->
           <ion-icon  size="small"  style="color: #465B7D; margin-left: 5px; " [name]="menu.icon+ '-outline'" ></ion-icon>
           <ion-text style="font-size: 14px; margin-left: 15px;  font-family: RobotoMedium, sans-serif ;  color:#465B7D" [innerText]="menu.name"></ion-text>

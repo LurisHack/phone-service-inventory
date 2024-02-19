@@ -23,21 +23,21 @@ export class HomeComponent  implements OnInit {
 
 
   projectShortcuts = [
-    {id: 1, groupName: 'Dashboard', name: 'Dashboard', icon: 'desktop', routerLink: 'dashboard', disabled: false},
-    {id: 1, groupName: 'Management', name: 'Accept', icon: 'business', routerLink: 'accept', disabled: false},
+    {id: 1, groupName: 'Dashboard', name: 'Dashboard', icon: 'desktop', routerLink: 'dashboard', fragment: '', disabled: false},
+    {id: 1, groupName: 'Management', name: 'Accept', icon: 'business', routerLink: 'accept', fragment: 'accept-today',disabled: false},
 
   ]
 
 
   productCategories = [
-    {id: 1, groupName: 'Inventory', name: 'Order', icon: 'business', routerLink: 'order-list', disabled: false},
-    {id: 2, groupName: 'Inventory', name: 'History', icon: 'home', routerLink: 'history', disabled: false},
+    {id: 1, groupName: 'Inventory', name: 'Order', icon: 'business', routerLink: 'order', fragment: '', disabled: false},
+    {id: 2, groupName: 'Inventory', name: 'History', icon: 'home', routerLink: 'history', fragment: '', disabled: false},
 
-    {id: 3, groupName: 'Setting', name: 'Shop Detail', icon: 'home', routerLink: 'shop-detail', disabled: false}
+    {id: 3, groupName: 'Setting', name: 'Shop Detail', icon: 'home', routerLink: 'shop-detail', fragment: '', disabled: false}
 
   ]
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
@@ -48,7 +48,9 @@ export class HomeComponent  implements OnInit {
     const nativeEl = this.accordionGroup;
     nativeEl.value = undefined
 
-    await this.router.navigate([$event.routerLink], {relativeTo: this.activatedRoute})
+    console.log($event)
+
+    await this.router.navigateByUrl('home/'+$event.routerLink +'#'+$event.fragment)
 
 
   }
