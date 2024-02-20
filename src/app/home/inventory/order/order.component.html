@@ -1,6 +1,6 @@
 <ion-header mode="ios" class="ion-no-border">
   <ion-toolbar class="header-background-color">
-    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-menu-button slot="start" (click)="showMenu()"></ion-menu-button>
 
     <ion-title>Orders</ion-title>
 
@@ -24,13 +24,10 @@
 </ion-header>
 
 
-<ion-content scroll-y="false" style="--height: 80%">
+<ion-content scroll-y="false">
   <luris-multi-list [header]="Header" [data]="Data" [itemSize]="35"></luris-multi-list>
-
-
-
 </ion-content>
 
-<ion-footer>
-     <luris-multi-form   *ngIf="openAdd" [FormInput]="FormInput" (formOutput)="formOutput($event)"></luris-multi-form>
+<ion-footer   *ngIf="openAdd">
+     <luris-multi-form  [FormInput]="FormInput" (formOutput)="formOutput($event)"></luris-multi-form>
 </ion-footer>

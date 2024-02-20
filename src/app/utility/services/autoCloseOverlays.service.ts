@@ -5,10 +5,8 @@ import {
   PopoverController,
   ModalController,
   MenuController,
-  ToastController,
-  IonMenu
-} from '@ionic/angular';
-import { Router } from '@angular/router';
+
+} from '@ionic/angular/standalone';
 
 @Injectable({
   providedIn: 'root'
@@ -23,20 +21,13 @@ export class AutoCloseOverlaysService {
     private popoverCtrl: PopoverController,
     private modalCtrl: ModalController,
     private menu: MenuController,
-    private ionMenu: IonMenu
-  ) {
+   ) {
 
 
 
 
 
-    this.ionMenu.ionDidOpen.subscribe(s => {
-      console.log(s)
-      if (!window.history.state.menu) {
-        const menuState = { menu: true };
-        history.pushState(menuState, '');
-      }
-    })
+
 
 
 

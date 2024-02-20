@@ -12,11 +12,11 @@ import {
   IonContent, IonFooter,
   IonHeader,
   IonIcon,
-  IonMenuButton,
+  IonMenuButton, IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
 import {addIcons} from "ionicons";
-import {add, close,  searchOutline} from "ionicons/icons";
+import {add, checkmarkOutline, close, printOutline, searchOutline, trashOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-accept-today',
@@ -34,6 +34,7 @@ import {add, close,  searchOutline} from "ionicons/icons";
     FormsModule,
     NgIf,
     LurisLibraryModule,
+    IonTitle,
   ],
   standalone: true,
  })
@@ -55,13 +56,12 @@ export class AcceptTodayComponent implements OnInit {
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
 
-    addIcons({add, close, searchOutline})
+    addIcons({add, close, searchOutline, printOutline, checkmarkOutline, trashOutline})
 
     this.activatedRoute.fragment.subscribe(fragment => {
       console.log(fragment)
       this.segmentValue = fragment ?? 'accept-today-today';
 
-      this.openAdd = true
     })
 
 
@@ -123,5 +123,12 @@ export class AcceptTodayComponent implements OnInit {
   addData() {
     this.openAdd = !this.openAdd
     console.log(this.openAdd)
+  }
+
+  showMenu() {
+    if (!window.history.state.menu) {
+      const menuState = { menu: true };
+      history.pushState(menuState, '');
+    }
   }
 }

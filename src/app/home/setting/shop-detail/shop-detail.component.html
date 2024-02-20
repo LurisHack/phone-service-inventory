@@ -1,6 +1,6 @@
 <ion-header mode="ios" class="ion-no-border">
   <ion-toolbar class="header-background-color">
-    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-menu-button slot="start" (click)="showMenu()"></ion-menu-button>
     <ion-title>Shop Detail</ion-title>
     <ion-button slot="end" size="small" (click)="openAdd = !openAdd" fill="clear">
       <ion-icon name="create-outline"></ion-icon>
@@ -8,56 +8,62 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
-  <ion-card>
-    <ion-item-divider style="background: transparent">
-     <strong>Shop</strong>
-    </ion-item-divider>
-       <ion-item>
-        <ion-label>
-          <ion-note>Name</ion-note>
+  <ion-note style="margin-left: 5px">
+    Shop
+  </ion-note>
+  <ion-card mode="ios" class="ion-no-margin ion-no-border" style="margin-top: 5px; margin-bottom: 25px">
+
+
+       <ion-item lines="none">
+        <ion-label color="medium">
+          Name
         </ion-label>
-        <ion-card-subtitle color="dark">
+        <ion-text>
           Top (mobile service)
-        </ion-card-subtitle>
+        </ion-text>
       </ion-item>
    </ion-card>
 
-  <ion-card>
-    <ion-item-divider>
-      <strong>Place</strong>
-    </ion-item-divider>
+
+  <ion-note  style="margin-left: 5px">
+    Place
+  </ion-note>
+  <ion-card mode="ios"  class="ion-no-margin" style="margin-top: 5px; margin-bottom: 25px">
+
     <ion-item>
-      <ion-label>
-        <ion-note>Phone</ion-note>
+      <ion-label color="medium">
+       Phone
       </ion-label>
-      <ion-card-subtitle color="dark">
+      <ion-text>
         09123123123
-      </ion-card-subtitle>
+      </ion-text>
     </ion-item>
-    <ion-item class="ion-text-wrap">
-      <ion-label>
-        <ion-note>Address</ion-note>
+    <ion-item  class="ion-text-wrap"  lines="none">
+      <ion-label color="medium">
+         Address
       </ion-label>
-      <ion-card-subtitle color="dark">
+      <ion-text>
         09123123123
-      </ion-card-subtitle>
+      </ion-text>
     </ion-item>
   </ion-card>
 
 
-  <ion-card>
-    <ion-item-divider>
-      <strong>Terms and conditions</strong>
-    </ion-item-divider>
+  <ion-note  style="margin-left: 5px">
+    Terms and conditions
+  </ion-note>
+
+  <ion-card mode="ios"  class="ion-no-margin" style="margin-top: 5px; margin-bottom: 25px">
+
     <ion-item class="ion-text-wrap">
-      <ion-label>
-        <ion-note>Rules</ion-note>
+      <ion-label color="medium">
+        Rules
       </ion-label>
-      <ion-card-subtitle color="dark">
+      <ion-text>
        If you lose voucher not responsible.
-      </ion-card-subtitle>
+      </ion-text>
     </ion-item>
 
   </ion-card>

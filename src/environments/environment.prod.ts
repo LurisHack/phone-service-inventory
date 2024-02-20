@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   firebase: {
     apiKey: "AIzaSyCGjPGr6Q9IA9GPAQT6cf71sLhaVMxcfT4",
     authDomain: "ms-cupid.firebaseapp.com",

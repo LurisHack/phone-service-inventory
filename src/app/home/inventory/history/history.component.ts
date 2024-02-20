@@ -37,4 +37,11 @@ export class HistoryComponent  implements OnInit {
   listReload() {
 
   }
+
+  showMenu() {
+    if (!window.history.state.menu) {
+      const menuState = { menu: true };
+      history.pushState(menuState, '');
+    }
+  }
 }

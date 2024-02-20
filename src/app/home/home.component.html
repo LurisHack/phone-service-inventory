@@ -14,7 +14,7 @@
 
       <ion-item-group  class="ion-margin-top" style="background: #F3F7FD">
 
-        <ion-item lines="none" class="ion-no-padding"  *ngFor="let menu of projectShortcuts"   detail="false"
+        <ion-item lines="none"  *ngFor="let menu of projectShortcuts"   detail="false"
                   style="--background: #F3F7FD; --border-radius: 30px; --min-height: 35px; margin: 5px; align-items: center;"    [button]="true" (click)="menuItemClick(menu)">
           <!--          <ion-icon style="font-size: 13px;color: #465B7D;margin-left: 3px;"   name="reorder-three-outline"></ion-icon>-->
           <ion-icon  size="small"  style="color: #465B7D; margin-left: 5px; " [name]="menu.icon+ '-outline'" ></ion-icon>
@@ -45,7 +45,7 @@
 
         </ion-accordion-group>
 
-        <ion-item [button]="true" lines="none"  detail="false" style="--background: #F3F7FD; --border-radius: 30px; --min-height: 20px; margin: 5px"  (click)="logout()">
+        <ion-item [button]="true" lines="none"  detail="false" style="--background: #F3F7FD; --border-radius: 30px; --min-height: 35px"  (click)="logout()">
           <ion-icon  size="small"  style="color: #465B7D" slot="start" name="log-out-outline"></ion-icon>
           <ion-text  style="font-size: 14px;  font-family: RobotoMedium, sans-serif ; color: #465B7D"    [innerText]="'Logout'"   ></ion-text>
         </ion-item>

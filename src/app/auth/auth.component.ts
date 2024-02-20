@@ -32,6 +32,6 @@ export class AuthComponent{
   //
   // }
   formOutput($event: { email: string; password: string; state: string }) {
-    this.router.navigateByUrl('/home').then()
+    this.router.navigateByUrl('/home/admin').then()
   }
 }

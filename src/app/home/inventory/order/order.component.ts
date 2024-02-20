@@ -5,6 +5,7 @@ import {MultiFormBluePrint, MultiFormModel} from "../../../utility/blueprint/mul
 import {LurisLibraryModule} from "koluris-library";
 import {MultiListHeaderBlueprint} from "../../../utility/blueprint/multi-list.blueprint";
 
+
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -23,7 +24,6 @@ export class OrderComponent  implements OnInit, OnDestroy {
   FormInput: MultiFormModel[]  = [];
   Header: any[] = [];
   Data: any[] = [];
-
 
 
   ngOnInit() {
@@ -62,5 +62,12 @@ export class OrderComponent  implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     console.log('order page destory')
+  }
+
+  showMenu() {
+    if (!window.history.state.menu) {
+      const menuState = { menu: true };
+      history.pushState(menuState, '');
+    }
   }
 }

@@ -3,7 +3,7 @@ import {DashboardComponent} from "./dashboard.component";
 
 export const DashboardRoute: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: DashboardComponent,
     children: [
       {
@@ -20,9 +20,14 @@ export const DashboardRoute: Routes = [
       },
       {
         path: '',
-        redirectTo: 'chart',
+        redirectTo: '/home/dashboard/chart',
         pathMatch: "full"
       }
     ]
+  },
+  {
+    path: '',
+    redirectTo: '/home/dashboard/chart',
+    pathMatch: "full"
   }
 ]

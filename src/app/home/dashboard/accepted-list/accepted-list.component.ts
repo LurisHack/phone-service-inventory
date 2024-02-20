@@ -16,4 +16,11 @@ export class AcceptedListComponent  implements OnInit {
 
   ngOnInit() {}
 
+  showMenu() {
+       if (!window.history.state.menu) {
+        const menuState = { menu: true };
+        history.pushState(menuState, '');
+      }
+
+  }
 }

@@ -3,6 +3,8 @@ import {IonicModule} from "@ionic/angular";
 import {LurisLibraryModule} from "koluris-library";
 import {NgIf} from "@angular/common";
 import {MultiFormBluePrint, MultiFormModel} from "../../../utility/blueprint/multi-form.blueprint";
+import {addIcons} from "ionicons";
+import {createOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-shop-detail',
@@ -22,6 +24,7 @@ export class ShopDetailComponent implements OnInit {
 
 
   constructor() {
+    addIcons({createOutline})
   }
 
   ngOnInit() {
@@ -42,4 +45,12 @@ export class ShopDetailComponent implements OnInit {
   formOutput($event: MultiFormModel) {
 
   }
+
+       showMenu() {
+        if (!window.history.state.menu) {
+          const menuState = { menu: true };
+          history.pushState(menuState, '');
+        }
+
+    }
 }
