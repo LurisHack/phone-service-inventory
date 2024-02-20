@@ -2,7 +2,7 @@ import {Component, HostListener, Optional} from '@angular/core';
 import {AlertController, IonApp, IonRouterOutlet, Platform} from '@ionic/angular/standalone';
 import {AutoCloseOverlaysService} from "./utility/services/autoCloseOverlays.service";
 import { App } from '@capacitor/app';
- declare var StartAppAds:any;
+declare var StartAppAds:any;
 
 @Component({
   selector: 'app-root',
@@ -33,7 +33,10 @@ export class AppComponent {
 
         StartAppAds.init("201233460");
 
-        this.showBanner()
+        setTimeout(() => {
+        StartAppAds.showBanner();
+
+        }, 10000)
 
         this.platform.backButton.subscribeWithPriority(-1, async () => {
           if (!this.routerOutlet?.canGoBack()) {
@@ -100,39 +103,7 @@ export class AppComponent {
 
   }
 
-  private showBanner() {
 
-    console.log('banner loading')
-
-         StartAppAds.showBanner();
-
-
-      document.addEventListener('startappads.banner.load', () => {
-            //banner has been loaded and displayed.
-            //do something here
-          });
-
-          document.addEventListener('startappads.banner.load_fail', (b) => {
-            //banner failed to load
-            //do something here
-            //IMPORTANT: if banner failed to load dont use StartAppAds.showBanner(); again. StartAppAds will load a new one by itself!
-
-            console.log('banner load fail')
-            console.log(b)
-          });
-
-          document.addEventListener('startappads.banner.clicked', () => {
-            //banner has been clicked
-            //do something here. Usefull to hide banner to prevent click bombing.
-          });
-
-          document.addEventListener('startappads.banner.hide', () => {
-            //banner has been removed
-            //do something here
-          });
-
-
-   }
   //
   @HostListener('window:popstate', ['$event'])
   async onPopState() {
