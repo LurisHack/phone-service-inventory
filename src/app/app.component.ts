@@ -2,7 +2,6 @@ import {Component, HostListener, Optional} from '@angular/core';
 import {AlertController, IonApp, IonRouterOutlet, Platform} from '@ionic/angular/standalone';
 import {AutoCloseOverlaysService} from "./utility/services/autoCloseOverlays.service";
 import { App } from '@capacitor/app';
-declare var StartAppAds:any;
 
 @Component({
   selector: 'app-root',
@@ -31,12 +30,6 @@ export class AppComponent {
       console.log(this.platform.is('android'))
       if (this.platform.is("android")) {
 
-        StartAppAds.init("201233460");
-
-        setTimeout(() => {
-        StartAppAds.showBanner();
-
-        }, 10000)
 
         this.platform.backButton.subscribeWithPriority(-1, async () => {
           if (!this.routerOutlet?.canGoBack()) {
