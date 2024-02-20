@@ -1,18 +1,40 @@
 import {Component, OnInit} from '@angular/core';
-  import {FormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {IonicModule} from "@ionic/angular";
 
 import {MultiListHeaderBlueprint, MultiListHeaderModel} from "../../../utility/blueprint/multi-list.blueprint";
  import {MultiFormBluePrint, MultiFormModel} from "../../../utility/blueprint/multi-form.blueprint";
 import {LurisLibraryModule} from "koluris-library";
 import {ActivatedRoute, Router} from "@angular/router";
+import {
+  IonBadge,
+  IonButton,
+  IonContent, IonFooter,
+  IonHeader,
+  IonIcon,
+  IonMenuButton,
+  IonToolbar
+} from "@ionic/angular/standalone";
+import {addIcons} from "ionicons";
+import {add, close,  searchOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-accept-today',
   templateUrl: './accept-today.component.html',
   styleUrls: ['./accept-today.component.scss'],
-  imports: [FormsModule, NgIf, IonicModule, LurisLibraryModule],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonMenuButton,
+    IonBadge,
+    IonIcon,
+    IonButton,
+    IonContent,
+    IonFooter,
+    FormsModule,
+    NgIf,
+    LurisLibraryModule,
+  ],
   standalone: true,
  })
 export class AcceptTodayComponent implements OnInit {
@@ -33,9 +55,13 @@ export class AcceptTodayComponent implements OnInit {
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
 
+    addIcons({add, close, searchOutline})
+
     this.activatedRoute.fragment.subscribe(fragment => {
       console.log(fragment)
       this.segmentValue = fragment ?? 'accept-today-today';
+
+      this.openAdd = true
     })
 
 

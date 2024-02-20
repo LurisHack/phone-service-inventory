@@ -31,8 +31,8 @@ export class HomeComponent  implements OnInit {
   productCategories = [
 
     {id: 1, groupName: 'Home', name: 'Dashboard', icon: 'desktop', routerLink: 'dashboard', fragment: '', disabled: false},
-    {id: 1, groupName: 'Home', name: 'Accept Today', icon: 'business', routerLink: 'accept-today', fragment: 'accept-today',disabled: false},
-    {id: 1, groupName: 'Home', name: 'Accepted List', icon: 'business', routerLink: 'accepted-list', fragment: 'accepted-list',disabled: false},
+    {id: 1, groupName: 'Home', name: 'Accept Today', icon: 'business', routerLink: 'accept-today', fragment: '',disabled: false},
+    {id: 1, groupName: 'Home', name: 'Accepted List', icon: 'business', routerLink: 'accepted-list', fragment: '',disabled: false},
 
 
     {id: 1, groupName: 'Inventory', name: 'Order', icon: 'business', routerLink: 'order', fragment: '', disabled: false},

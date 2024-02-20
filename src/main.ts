@@ -1,7 +1,6 @@
 import {enableProdMode, importProvidersFrom} from '@angular/core';
 import { environment } from './environments/environment.prod';
-import {IonicModule, IonicRouteStrategy} from "@ionic/angular";
-import {provideRouter, RouteReuseStrategy} from "@angular/router";
+ import {provideRouter, RouteReuseStrategy} from "@angular/router";
 import {AppComponent} from "./app/app.component";
 import {  USE_EMULATOR as USE_AUTH_EMULATOR,  } from '@angular/fire/compat/auth';
 import {  USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';
@@ -15,7 +14,7 @@ import {getStorage, provideStorage} from "@angular/fire/storage";
 import {routes} from "./app/app.routes";
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
 import {bootstrapApplication} from "@angular/platform-browser";
-import {LurisLibraryModule} from "koluris-library";
+import {IonicRouteStrategy, provideIonicAngular} from "@ionic/angular/standalone";
 
 if (environment.production) {
   enableProdMode();
@@ -40,12 +39,10 @@ bootstrapApplication(AppComponent, {
     {
       provide: USE_AUTH_EMULATOR, useValue: environment.production ? undefined : ['http://192.168.1.7:9099']} ,
     { provide: USE_FIRESTORE_EMULATOR, useValue: environment.production ? undefined : ['192.168.1.7', 8080] },
-
-
-    provideRouter(routes),
+    provideIonicAngular(),
+     provideRouter(routes),
     importProvidersFrom([
-      IonicModule.forRoot(),
-       provideFirebaseApp(() => initializeApp(environment.firebase)),
+         provideFirebaseApp(() => initializeApp(environment.firebase)),
       provideAuth(() => getAuth() ),
       provideFirestore(() => getFirestore()),
       provideFunctions(() => getFunctions()),

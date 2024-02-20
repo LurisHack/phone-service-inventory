@@ -1,81 +1,15 @@
-<!--<ion-header mode="ios">-->
-<!--  <ion-toolbar>-->
-<!--    <ion-menu-button  slot="start"  ></ion-menu-button>-->
-<!--    <ion-title>Dashboard</ion-title>-->
-<!--  </ion-toolbar>-->
-<!--</ion-header>-->
-
-
-<ion-content style="--background: #FAFBFF">
-  <ion-grid class="ion-no-padding">
-    <ion-row style="align-items: center">
-
-      <ion-col size-xs="12" size-sm="6" size-md="4" size-lg="3" size-xl="3">
-
-        <ion-card *ngIf="true" style="box-shadow: none">
-          <ion-card-header>
-            <ion-card-subtitle
-              style="color: #808080; text-transform: capitalize; font-weight: bold; font-size: 14px; margin-left: 2px">
-              Good Morning
-            </ion-card-subtitle>
-            <ion-card-title style="color: #52526C; ">
-              Ko Luris
-            </ion-card-title>
-          </ion-card-header>
-
-
-
-        </ion-card>
-      </ion-col>
-
-
-      <ion-col size-xs="12" size-sm="6" size-md="4" size-lg="3" size-xl="3">
-
-        <ion-card button="true" style="box-shadow: none">
-          <ion-card-header *ngIf="true">
-            <ion-card-subtitle
-              style="color: #808080; text-transform: capitalize; font-weight: bold; font-size: 14px; margin-left: 2px">
-              Today income
-            </ion-card-subtitle>
-            <ion-card-title style="color: #52526C; ">
-              10000
-            </ion-card-title>
-          </ion-card-header>
-
-          <ion-card-header *ngIf="0">
-            <ion-card-subtitle
-              style="color: #808080; text-transform: capitalize; font-weight: bold; font-size: 14px; margin-left: 2px">
-              Main Balance
-            </ion-card-subtitle>
-            <ion-card-title style="color: #52526C; ">
-             0
-            </ion-card-title>
-          </ion-card-header>
-
-
-        </ion-card>
-      </ion-col>
-
-    </ion-row>
-  </ion-grid>
-
-
-</ion-content>
-
-
-
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
+ <ion-tabs>
+  <ion-tab-bar  class="ion-hide-xl-up" slot="bottom">
     <ion-tab-button tab="chart">
-      <ion-icon name="play-circle"></ion-icon>
+      <ion-icon name="speedometer"></ion-icon>
       Dashboard
     </ion-tab-button>
     <ion-tab-button tab="accept-today">
-      <ion-icon name="radio"></ion-icon>
+      <ion-icon name="document-text"></ion-icon>
       Accept Today
     </ion-tab-button>
     <ion-tab-button tab="accepted-list">
-      <ion-icon name="library"></ion-icon>
+      <ion-icon name="reader"></ion-icon>
       Accepted List
     </ion-tab-button>
   </ion-tab-bar>
