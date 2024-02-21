@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {ModalService} from "../../service/modal.service";
-import {NgForOf, NgIf} from "@angular/common";
+import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-view',
@@ -10,7 +10,8 @@ import {NgForOf, NgIf} from "@angular/common";
   imports: [
     IonicModule,
     NgForOf,
-    NgIf
+    NgIf,
+    KeyValuePipe
   ],
   standalone: true
 })

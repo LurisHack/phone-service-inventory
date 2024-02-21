@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {NgIf} from "@angular/common";
 import {LurisLibraryModule} from "koluris-library";
-// import {documentText, reader, speedometer} from "ionicons/icons";
 import {addIcons} from "ionicons";
  import {IonTabs, IonTabBar, IonTabButton, IonIcon} from "@ionic/angular/standalone";
 import {documentText, reader, speedometer} from "ionicons/icons";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Component({
   selector: 'app-dashboard',
@@ -22,11 +22,13 @@ import {documentText, reader, speedometer} from "ionicons/icons";
 })
 export class DashboardComponent  implements OnInit {
 
-  constructor() {
-    addIcons({ speedometer, documentText, reader });
 
+  constructor(private afs: AngularFirestore) {
+    addIcons({ speedometer, documentText, reader });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
 }

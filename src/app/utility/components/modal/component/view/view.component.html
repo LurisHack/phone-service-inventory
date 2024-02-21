@@ -1,6 +1,6 @@
 <ion-header mode="ios">
   <ion-toolbar >
-    <ion-title>View</ion-title>
+    <ion-title>Detail</ion-title>
     <ion-button slot="end" fill="clear" size="small" (click)="MS.closeModal()">
     <ion-icon name="close-outline"></ion-icon>
     </ion-button>
@@ -11,10 +11,10 @@
 
 
   <ion-list *ngIf="props">
-    <ion-item *ngFor="let key of props.key">
-      <ion-label [innerText]="key"></ion-label>
+    <ion-item *ngFor="let prop of props | keyvalue">
+      <ion-label [innerText]="prop.key"></ion-label>
       <strong class="ion-text-wrap">
-        {{props.data[key]}}
+        {{prop.value}}
       </strong>
     </ion-item>
   </ion-list>

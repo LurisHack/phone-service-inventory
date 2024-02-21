@@ -7,7 +7,7 @@
 
 
 <ion-content style="--background: #FAFBFF">
-  <ion-grid class="ion-no-padding">
+  <ion-grid *ngIf="dashboardData" class="ion-no-padding">
     <ion-row style="align-items: center">
 
 
@@ -21,7 +21,7 @@
               Today income
             </ion-card-subtitle>
             <ion-card-title style="color: #52526C; ">
-              10000
+              {{dashboardData.todayIncome}}
             </ion-card-title>
           </ion-card-header>
         </ion-card>
@@ -35,7 +35,7 @@
               Today expense
             </ion-card-subtitle>
             <ion-card-title style="color: #52526C; ">
-              2000
+              {{dashboardData.todayExpense}}
             </ion-card-title>
           </ion-card-header>
         </ion-card>
@@ -49,7 +49,7 @@
               This month income
             </ion-card-subtitle>
             <ion-card-title style="color: #52526C; ">
-              280122
+              {{dashboardData.thisMonthIncome}}
             </ion-card-title>
           </ion-card-header>
         </ion-card>
@@ -63,7 +63,7 @@
               This month expense
             </ion-card-subtitle>
             <ion-card-title style="color: #52526C; ">
-              10000
+              {{dashboardData.thisMonthExpense}}
             </ion-card-title>
           </ion-card-header>
         </ion-card>

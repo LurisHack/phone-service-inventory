@@ -25,7 +25,10 @@
 </ion-header>
 
 <ion-content scroll-y="false">
-  <luris-multi-list [header]="header" [data]="data" [itemSize]="35"></luris-multi-list>
+  <luris-multi-list [header]="header" [data]="data" [itemSize]="35"
+                    (itemClickEvent)="itemClickEvent($event)"
+                    (scrollEvent)="scrollEvent($event)"
+  ></luris-multi-list>
 </ion-content>
 
 
